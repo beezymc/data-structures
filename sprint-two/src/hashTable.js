@@ -16,7 +16,7 @@ HashTable.prototype.insert = function(k, v) {
     index = getIndexBelowMaxForKey(k, this._limit);
     if (this._storage.get(index) !== undefined) {
       while (this._storage.get(index) !== undefined) {
-        var randomInt = (Math.floor(Math.random() * 8));
+        var randomInt = (Math.floor(Math.random() * this._limit));
         index = randomInt;
       }
     }
