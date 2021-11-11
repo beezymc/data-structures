@@ -25,25 +25,19 @@ var LinkedList = function() {
     //starts at list.head, checks for value
     //list.head does not have value, check list.head.next
     let currentNode = list.head;
-    console.log(list);
+    let result = false;
     const checkNode = function(node, target) {
       if (node.value === target) {
-        console.log(typeof target);
-        console.log(node.value, target);
-        return true;
+        result = true;
       } else {
-        console.log('Hit else');
-        console.log(node.next, target);
         if (node.next !== null) {
           checkNode(node.next, target);
-        } else {
-          return false;
         }
       }
     };
-    return checkNode(currentNode, target);
+    checkNode(currentNode, target);
+    return result;
   };
-
   return list;
 };
 
