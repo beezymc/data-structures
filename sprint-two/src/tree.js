@@ -16,35 +16,27 @@ var extend = function(to, from) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // If root (first to be added)
   let childTree = Tree(value);
-  //console.log(childTree);
-  //console.log(Tree);
-  if (this.children.length === 0) {
-    this.children.push(childTree);
-    console.log(childTree);
-  }
+  this.children.push(childTree);
 };
 
 treeMethods.contains = function(target) {
-//   let currentNode = list.head;
-//   let result = false;
-//   const checkNode = function(node, target) {
-//     if (node.value === target) {
-//       result = true;
-//     } else {
-//       if (node.next !== null) {
-//         checkNode(node.next, target);
-//       }
-//     }
-//   };
-//   checkNode(currentNode, target);
-//   return result;
-// };
-//   return list;
+  let currentNode = this;
+  let result = false;
+  const checkNode = function(node, target) {
+    if (node.value === target) {
+      result = true;
+    } else {
+      if (node.children.length !== 0) {
+        for (let i = 0; i < node.children.length; i++) {
+          checkNode(node.children[i], target);
+        }
+      }
+    }
+  };
+  checkNode(currentNode, target);
+  return result;
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
