@@ -62,7 +62,7 @@ bstPrototype.depthFirstLog = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- Insert: O(N)
- Contains: O(log(N))
- DepthFirstLog: O(N)
+ * Insert: O(log(N))
+ * Contains: O(log(N))
+ * DepthFirstLog: Best Case O(N), depends on cb
  */

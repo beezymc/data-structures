@@ -11,7 +11,7 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
-  return Object.keys(this._storage).includes(item);
+  return this._storage[item] === null;
 };
 
 setPrototype.remove = function(item) {
@@ -20,4 +20,7 @@ setPrototype.remove = function(item) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * .add, .remove, .contains = constant
+ *
+ *
  */

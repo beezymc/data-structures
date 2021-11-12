@@ -13,11 +13,12 @@ Graph.prototype.addNode = function(node) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  if (Object.keys(this.nodes).includes(JSON.stringify(node))) {
-    return true;
-  } else {
-    return false;
-  }
+  return this.nodes[node] !== undefined;
+  // if (Object.keys(this.nodes).includes(JSON.stringify(node))) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
 };
 
 // Removes a node from the graph.
@@ -34,6 +35,7 @@ Graph.prototype.removeNode = function(node) {
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  return (this.nodes[fromNode][toNode] === null) && (this.nodes[toNode][fromNode] === null);
   if (Object.keys(this.nodes[fromNode]).includes(JSON.stringify(toNode)) && Object.keys(this.nodes[toNode]).includes(JSON.stringify(fromNode))) {
     return true;
   } else {
@@ -63,6 +65,9 @@ Graph.prototype.forEachNode = function(cb) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * .addNode, .addEdge, .removeEdge, .contains, .hasEdge = constant
+ * .removeNode, = linear
+ * .forEachNode = linear (best case), depends on callback
  */
 
 
