@@ -6,17 +6,11 @@ var Graph = function(value) {
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   this.nodes[node] = {};
-  // this.edges.push(node);
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
   return this.nodes[node] !== undefined;
-  // if (Object.keys(this.nodes).includes(JSON.stringify(node))) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
 };
 
 // Removes a node from the graph.
@@ -46,7 +40,6 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 Graph.prototype.removeEdge = function(fromNode, toNode) {
   delete this.nodes[fromNode][toNode];
   delete this.nodes[toNode][fromNode];
-
 };
 
 // Pass in a callback which will be executed on each node of the graph.

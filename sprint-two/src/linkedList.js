@@ -1,11 +1,11 @@
-var LinkedList = function() {
-  var list = {};
+const LinkedList = function() {
+  const list = {};
   list.head = null;
   list.tail = null;
 
   list.addToTail = function(value) {
-    let newNode = new Node(value);
-    if (list.head === null) {
+    const newNode = new Node(value);
+    if (!list.tail) {
       list.head = newNode;
       list.tail = newNode;
     } else {
@@ -15,7 +15,7 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    let headVal = list.head.value;
+    const headVal = list.head.value;
     list.head = list.head.next;
     return headVal;
   };
@@ -25,28 +25,34 @@ var LinkedList = function() {
     //starts at list.head, checks for value
     //list.head does not have value, check list.head.next
     let currentNode = list.head;
-    let result = false;
-    const checkNode = function(node, target) {
-      if (node.value === target) {
-        result = true;
-      } else {
-        if (node.next !== null) {
-          checkNode(node.next, target);
-        }
+    //Use while loop(style choice)
+    while (currentNode) {
+      if (currentNode.value === target) {
+        return true;
       }
-    };
-    checkNode(currentNode, target);
-    return result;
+      currentNode = currentNode.next;
+    }
+    return false;
+    // let result = false;
+    // const checkNode = function(node, target) {
+    //   if (node.value === target) {
+    //     result = true;
+    //   } else {
+    //     if (node.next) {
+    //       checkNode(node.next, target);
+    //     }
+    //   }
+    // };
+    // checkNode(currentNode, target);
+    // return result;
   };
   return list;
 };
 
 var Node = function(value) {
   var node = {};
-
   node.value = value;
   node.next = null;
-
   return node;
 };
 
